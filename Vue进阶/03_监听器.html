@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>计数器：{{count}}</h2>
+        <input type="button" value="点我+1" @click="count++">
+        <hr />
+        <label>名：<input type="text" v-model="firstName"></input></label>
+        <label>姓：<input type="text" v-model="lastName"></input></label>
+        <label>姓名：{{fullName}}</label>
+
+    </div>
+</body>
+<script>
+    var VM = new Vue({
+        el: "#app",
+        data: {
+            message: "hello world",
+            count: 1,
+            firstName: "",
+            lastName: "",
+            fullName: ""
+        },
+        // 监听器
+        watch: {
+            // 检测属性值的变化
+            // count必须是model中定义的变量
+            count: function (newValue, oldValue) {
+                alert("count+1" + "旧值=" + oldValue + "，新值=" + newValue);
+            },
+            firstName: function (newValue, oldValue) {
+                this.fullName = newValue + " " + this.lastName;
+            },
+            lastName: function (newValue, oldValue) {
+                this.fullName = this.firstName + " " + newValue;
+            },
+        }
+
+    });
+</script>
+
+</html>

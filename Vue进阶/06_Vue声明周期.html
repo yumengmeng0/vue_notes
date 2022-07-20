@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2 id="h">{{message}}</h2>
+        <button @click="change">改变message</button>
+   
+    </div>
+</body>
+<script>
+    var VM = new Vue({
+        el: "#app",
+        data: {
+            message: "hello world"
+        },
+        methods: {
+            show() {
+                alert("show方法执行");
+            },
+            change() {
+                this.message = "message被修改";
+            }
+        },
+        // beforeCreate() {
+        //     alert("1.beforeCreate在Vue对象实例化之前执行");
+        //     // console.log(this.message); // undefined
+        //     // this.show(); // this.show is not a function
+        // },
+        // created() {
+        //     console.log(this.message);
+        //     this.show();
+        //     alert("2.created执行时，组件实例化完成，DOM还未生成");
+        // },
+        // beforeMount() {
+        //     this.show();
+        //     alert("3.beforeMount执行时，模版已经在内存中编辑完成（data数据就绪），未被渲染到页面");
+        //     console.log("页面显示内容：" + document.getElementById("h").innerHTML); // {{message}}
+        //     console.log("data中message：" + this.message) // message is not defined
+        // },
+        // mounted() {
+        //     this.show();
+        //     alert("4.mounted执行时，模版已经被渲染到页面，执行完就会显示");
+        //     console.log("页面显示内容：" + document.getElementById("h").innerHTML); // hello world
+        //     console.log("data中message：" + this.message) // hello world
+        // },
+        // beforeUpdate() {
+
+        //     alert("5.beforeUpdate执行时，内存数据已经更新，未渲染到页面");
+        //     console.log("页面显示内容：" + document.getElementById("h").innerHTML); // hello world
+        //     console.log("data中message：" + this.message) // message被修改
+        // },
+        updated() {
+            alert("6.updated执行时，内存数据已经更新，此方法执行完显示页面");
+            console.log("页面显示内容：" + document.getElementById("h").innerHTML); // message被修改
+            console.log("data中message：" + this.message) // message被修改
+        },
+
+    });
+</script>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{message}}</h2>
+        <my-header></my-header>
+        <web-msg></web-msg>
+    </div>
+</body>
+<script>
+
+    // 1. 全局组件
+    /*
+        组件命名规则，公司名-组件作用    
+    */
+
+    Vue.component("my-header", {
+        template: "<div><h1 @click='hello'>{{msg}}</h1></div>", // template模版中只能用一个根元素
+        data() {
+            return {
+                msg: "这是组件中数据部分"
+            }
+        },
+        methods: {
+            hello() {
+                alert("hello component")
+            }
+        }
+    });
+
+
+
+
+    var VM = new Vue({
+        el: "#app",
+        data: {
+            message: "hello world"
+        },
+        // 2. 局部组件
+        components: {
+            "web-msg": {
+                template: "<div><h1>{{msg1}}===>{{msg2}}</h1></div>",
+                data() {
+                    return {
+                        msg1: "开发ing...",
+                        msg2: "开发完成！",
+                    }
+                },
+            }
+        }
+    });
+</script>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="添加数据" @click="add">
+        <input type="button" value="移除数据" @click="remove">
+
+        <ul>
+            <li v-for="(item, index) in arr">{{index}}:{{item}}</li>
+        </ul>
+
+        <h2 v-for="(item, index) in persons">{{item.name}}</h2>
+
+    </div>
+</body>
+<script>
+    var VM = new Vue({
+        el: "#app",
+        data: {
+            message: "hello world",
+            arr: ["张三", "李四", "王五"],
+            persons: [{ name: "张三" }, { name: "李四" }]
+        },
+        methods: {
+            add: function () {
+                this.persons.push({ name: "小明" });
+            },
+            remove: function () {
+                this.persons.shift();
+            },
+        },
+    });
+</script>
+
+</html>

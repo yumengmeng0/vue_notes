@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+    <script src="./js/vue-router.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- 添加超链接，router-link组件进行导航，to属性指定连接 -->
+        <p>
+            <router-link to="/home">Home</router-link>
+            <router-link to="/news">News</router-link>
+        </p>
+        <!-- 路由的出口，路由匹配到组件后渲染到这里。 -->
+        <router-view></router-view>
+    </div>
+
+
+</body>
+<script>
+
+    // 路由所需组件
+    const home = { template: "<div>首页</div>" };
+    const news = { template: "<div>新闻</div></div></div>" };
+
+    // 路由 path，component
+    const routes = [
+        { path: "/home", component: home },
+        { path: "/news", component: news }
+    ];
+
+    // 路由管理器实例
+    const router = new VueRouter({
+        routes: routes,
+    });
+
+
+    // 将router注入到vue实例中，让整个应用都用于路由
+    var VM = new Vue({
+        router
+    }).$mount("#app"); // 代替el
+</script>
+
+</html>

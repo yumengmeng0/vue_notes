@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{a*b}}</h2>
+        <!-- 函数m1执行2次 -->
+        <h2>{{m1()}}</h2>
+        <h2>{{m1()}}</h2>
+        <!-- 计算属性m2执行1次 -->
+        <h2>{{m2}}</h2>
+        <h2>{{m2}}</h2>
+
+
+    </div>
+</body>
+<script>
+    var VM = new Vue({
+        el: "#app",
+        data: {
+            message: "hello world",
+            a: 10,
+            b: 20
+        },
+        methods: {
+            m1: function () {
+                console.log("m1");
+                return this.a * this.b;
+            }
+        },
+        computed: {
+            m2: function () {
+                console.log("m2");
+                return this.a * this.b;
+            }
+        }
+    });
+</script>
+
+</html>

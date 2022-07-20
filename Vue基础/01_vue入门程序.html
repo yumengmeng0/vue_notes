@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue入门</title>
+    <!-- 1.创建HTML文件， 引入vue.js 有两种方式-->
+    <!-- 第一种 引入 vue.js的CDN地址 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script> -->
+    <!-- 第二种 本地导入 -->
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <!-- 2. 定义app div，此区域作为vue的接管区域 -->
+    <div id="app">
+        <!-- {{}} 双括号是VUE中的差值表达式,将表达式的值输出到HTML页面 -->
+        {{message}}<br>
+        <ul>
+            <li>{{names[0]}}</li>
+            <li>{{names[1]}}</li>
+        </ul><br>
+    </div>
+</body>
+<script>
+    //3. 创建vue实例
+    var VM = new Vue({
+        //定义 Vue实例挂载的元素节点,表示vue接管该div
+        el: '#app', // 挂载点
+        //4.定义model模型数据对象
+        // Vue中用到的数据
+        data: {
+            message: "Hello Vue!",
+            // 对象
+            school: {
+                name: "向阳中学",
+                phone: 123456
+            },
+            // 数组
+            names: ["张三", "李四"]
+        }
+    });
+</script>
+
+</html>

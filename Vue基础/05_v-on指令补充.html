@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- 函数传参 -->
+        <input type="button" value="点击按钮" v-on:click="showTime(666,'param2')">
+
+        <!-- 事件修饰符 -->
+        <input type="text" @keyup="keyup" @keyup.enter="keyupenter">
+
+    </div>
+</body>
+<script>
+    /*
+        1.函数调用传参
+        2.事件修饰符
+    
+    */
+    var VM = new Vue({
+        el: "#app",
+        data: {
+            message: "hello world"
+        },
+        methods: {
+            showTime: function (p1, p2) {
+                console.log(p1 + p2);
+            },
+            keyup: function () {
+                console.log("keyup");
+            },
+            keyupenter: function () {
+                console.log("keyupenter");
+            }
+        },
+
+    });
+</script>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <img src="./img/car.gif">
+        <!-- <img src="{{img_url}}">  错误写法 -->
+
+        <img v-bind:src="img_url">
+        <img :src="img_url">
+
+    </div>
+</body>
+<script>
+    /*
+        v-bind：设置元素的属性
+        语法：
+            v-bind:属性名 = 表达式
+        作用：
+            为元素绑定属性
+    */
+    var VM = new Vue({
+        el: "#app",
+        data: {
+            message: "hello world",
+            img_url: "./img/car.gif"
+        },
+    });
+</script>
+
+</html>

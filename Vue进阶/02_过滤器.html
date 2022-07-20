@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>价格：{{price | addIcon}}</h2>
+        <h2>价格：{{price | addIcon1}}</h2>
+        <h2>姓名{{user.name}}开头大写：{{user.name | changeName}}</h2>
+
+    </div>
+</body>
+<script>
+
+    // 在创建Vue实例之前创建全局过滤器
+    Vue.filter("changeName", function (value) {
+        return value.charAt(0).toUpperCase() + value.slice(1) ;
+    });
+
+    var VM = new Vue({
+        el: "#app",
+        data: {
+            message: "hello world",
+            price: 200,
+            user: { name: "tom" }
+        },
+        // 局部过滤器
+        filters: {
+            addIcon(value) {
+                return "￥" + value;
+            },
+            addIcon1:function (value) {
+                return "$" + value;
+            }
+        }
+    });
+</script>
+
+</html>

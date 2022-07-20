@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-bind:value="message">
+        <input type="button" value="修改messsge" @click="update">
+        <hr>
+        <input type="text" v-model="message"></input>
+        <h2>{{message}}</h2>
+    </div>
+</body>
+<script>
+    /*
+        v-model：实现双向数据绑定
+        单向数据绑定：将model绑定到view上，view随着model变化（v-bind指令）
+        双向数据绑定：view和model互相修改（v-model指令）
+    */
+    var VM = new Vue({
+        el: "#app",
+        data: {
+            message: "hello world"
+        },
+        methods: {
+            update: function () {
+                this.message = "hello"
+            }
+        },
+    });
+</script>
+
+</html>
