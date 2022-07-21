@@ -1,0 +1,27 @@
+{
+  "name": "my-project",   // 项目基本信息
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {          // 指定运行脚本命令
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": { // 生产环境依赖的版本
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11",
+    "vue-router": "^3.2.0"
+  },
+  "devDependencies": { // 本地开发环境依赖的版本
+    "@vue/cli-plugin-babel": "~4.5.11",
+    "@vue/cli-plugin-router": "~4.5.11",
+    "@vue/cli-service": "~4.5.11",
+    "vue-template-compiler": "^2.6.11"
+  },
+  // 自定义配置
+    "vue": {
+    "devServer": {
+      "port": 8888,
+      "open": true
+    }
+  }
+}

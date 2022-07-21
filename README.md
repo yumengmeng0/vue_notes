@@ -96,7 +96,7 @@ var VM = new Vue({
     全局组件
     局部组件
 
-# 声明周期
+# 生命周期
 
     钩子函数：
     beforeCreate：在Vue实例化之前执行
@@ -155,3 +155,123 @@ var VM = new Vue({
   }).$mount("#app"); // 代替el
 </script>
 ```
+
+# NodeJS
+
+# NPM（Node Package Manager）
+
+    npm config ls：查看包管理路径
+
+```text
+
+  ; cli configs
+metrics-registry = "https://registry.npm.taobao.org/"
+scope = ""
+user-agent = "npm/6.14.11 node/v14.16.0 win32 x64"
+
+; userconfig C:\Users\ben\.npmrc
+
+cache = "c:\\software\\nodejs_package\\npm_cache"
+prefix = "c:\\software\\nodejs_package\\npm_modules"
+
+registry = "https://registry.npm.taobao.org/"
+
+; builtin config undefined
+
+; node bin location = C:\software\nodejs\node.exe
+; cwd = C:\Users\ben
+; HOME = C:\Users\ben
+; "npm config ls -l" to show all defaults.
+
+```
+
+    npm get prefix
+
+    c:\software\nodejs_package\npm_modules
+
+    配置环境变量：
+    NODE_HOME=c:\software\nodejs_package
+    path=%NODE_HOME%\npm_modules
+
+替换镜像：
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+# VueCli
+
+    安装 vue-cli
+    npm install -g @vue/cli
+
+    创建脚手架项目：
+    vue create project
+
+    目录结构：
+    babel.config.js
+    node_modules 依赖包目录
+    package.json 类似 maven 中的 pom.xml
+    public 静态资源
+    README.md
+    src 组件源码
+    | |-- App.vue Vue 项目的主文件
+    | |-- assets 静态图片资源
+    | |-- components 组件
+    | |-- main.js 打包运行的入口文件
+    | |-- router 路由文件
+    | `-- views 公共组件（各个主要页面）
+    yarn.lock
+
+    route mode ：
+      vue路由的两种模式：
+        1、hash模式，其原理是onhashchange事件，可以在window对象上监听这个事件；
+        2、history模式，可利用“history.pushState”的API来完成URL跳转。
+
+    自定义配置文件vue.config.js
+
+# ElementUI
+
+    npm -i element-ui -S
+    npm install --save element-ui
+
+    npm install // 解决找不到 index.css
+
+# 跨域
+
+    跨域是指通过 JS 在不同域之间进行数据传输或通信，比如用 ajax 向不同的域请求数据，只要协议、域名或端口号有任何一个不同，都被当作不同的域，浏览器就不允许跨域请求
+
+    已被CORS策略阻止：请求资源上没有'Access-Control-Allow-Origin'
+    Access to XMLHttpRequest at 'http://localhost:8080/lagou_edu_home/course?methodName=findCourseList' from origin 'http://localhost:8888' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+    :8080/lagou_edu_home/course?methodName=findCourseList:1 Failed to load resource: net::ERR_FAILED
+
+## 解决跨域问题
+
+    跨域的允许主要由服务器端控制。服务器端通过在响应的 header 中设置 Access-Control-AllowOrigin 及相关一系列参数，提供跨域访问的允许策略
+    设置响应头中的参数来允许跨域域请求:
+      Access-Control-Allow-Credentials
+      Access-Control-Allow-Origin 标识允许跨域的请求有哪些
+
+### 1. 在 POM 文件中引入依赖
+```xml
+<!-- 解决跨域问题所需依赖 -->
+<dependency>
+  <groupId>com.thetransactioncompany</groupId>
+  <artifactId>cors-filter</artifactId>
+  <version>2.5</version>
+</dependency>
+
+```
+
+### 2. 在web.xml中 配置跨域 filter
+
+```xml
+<!--配置跨域过滤器-->
+<filter>
+  <filter-name>corsFilter</filter-name>
+  <filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>
+</filter>
+<filter-mapping>
+  <filter-name>corsFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+</filter-mapping>
+
+```
+
+
